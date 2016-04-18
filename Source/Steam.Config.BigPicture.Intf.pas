@@ -31,7 +31,7 @@
     - Donations can be made via PayPal to PayPal [at] LaKraven (dot) Com
                                           ^  Garbled to prevent spam!  ^
 }
-unit Steam.Config.Client;
+unit Steam.Config.BigPicture.Intf;
 
 interface
 

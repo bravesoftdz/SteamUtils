@@ -7,7 +7,12 @@ uses
   Steam.Workshop.Manifests in '..\..\Source\Steam.Workshop.Manifests.pas',
   Steam.Config.Client in '..\..\Source\Steam.Config.Client.pas',
   Steam.Common in '..\..\Source\Steam.Common.pas',
-  Steam.Config.Controller in '..\..\Source\Steam.Config.Controller.pas';
+  Steam.Config.BigPicture in '..\..\Source\Steam.Config.BigPicture.pas',
+  Steam.App.Manifests.Intf in '..\..\Source\Steam.App.Manifests.Intf.pas',
+  Steam.Common.Intf in '..\..\Source\Steam.Common.Intf.pas',
+  Steam.Config.Client.Intf in '..\..\Source\Steam.Config.Client.Intf.pas',
+  Steam.Config.BigPicture.Intf in '..\..\Source\Steam.Config.BigPicture.Intf.pas',
+  Steam.Workshop.Manifests.Intf in '..\..\Source\Steam.Workshop.Manifests.Intf.pas';
 
 {$R *.res}
 
