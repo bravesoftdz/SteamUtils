@@ -31,7 +31,7 @@
     - Donations can be made via PayPal to PayPal [at] LaKraven (dot) Com
                                           ^  Garbled to prevent spam!  ^
 }
-unit Steam.Common.Intf;
+unit Steam.Api.Common.Intf;
 
 interface
 
@@ -44,35 +44,27 @@ uses
     Classes,
   {$ENDIF ADAPT_USE_EXPLICIT_UNIT_NAMES}
   ADAPT.Common.Intf, ADAPT.Common,
-  ADAPT.Generics.Lists.Intf;
+  ADAPT.Generics.Lists.Intf,
+  ADAPT.Generics.Maps.Intf,
+  Steam.Common.Intf;
 
 type
   // Forward Declarations
-  ISteamJsonFile = interface;
-  ISteamApp = interface;
+  ISteamApi = interface;
+  ISteamApps = interface;
 
-  // Generic Collections
-  ISteamStringList = IADList<String>;
-  ISteamAppList = IADList<ISteamApp>;
+  ISteamApi = interface(IADInterface)
+  ['{2915FC43-626C-4F5D-8280-88329701CF0B}']
 
-  ISteamJsonFile = interface(IADInterface)
-  ['{742C1414-FC96-4EA8-82E1-7AFD3A62B3CC}']
-    // Getters
-    function GetFileName: String;
-
-    // Properties
-    property FileName: String read GetFileName;
   end;
 
-  ISteamApp = interface(IADInterface)
-  ['{CF8F49F8-6971-464E-9014-3FF80BE01261}']
-    // Getters
-    function GetAppId: Cardinal;
-    function GetName: String;
+  ISteamApps = interface(ISteamApi)
+  ['{C028FD5E-BDA5-4677-877E-581EE3280582}']
+    // Api Getters
+    function GetAppList: ISteamAppList;
 
     // Properties
-    property AppId: Cardinal read GetAppId;
-    property Name: String read GetName;
+    property AppList: ISteamAppList read GetAppList;
   end;
 
 implementation

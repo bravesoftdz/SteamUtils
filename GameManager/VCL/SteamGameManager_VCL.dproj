@@ -138,6 +138,8 @@
         <DCCReference Include="..\..\Source\Steam.Config.Client.Intf.pas"/>
         <DCCReference Include="..\..\Source\Steam.Config.BigPicture.Intf.pas"/>
         <DCCReference Include="..\..\Source\Steam.Workshop.Manifests.Intf.pas"/>
+        <DCCReference Include="..\..\Source\Steam.Api.Common.pas"/>
+        <DCCReference Include="..\..\Source\Steam.Api.Common.Intf.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

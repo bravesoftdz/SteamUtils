@@ -31,49 +31,15 @@
     - Donations can be made via PayPal to PayPal [at] LaKraven (dot) Com
                                           ^  Garbled to prevent spam!  ^
 }
-unit Steam.Common.Intf;
+unit Steam.Api.Common;
 
 interface
 
-{$I ADAPT.inc}
-
-uses
-  {$IFDEF ADAPT_USE_EXPLICIT_UNIT_NAMES}
-    System.Classes,
-  {$ELSE}
-    Classes,
-  {$ENDIF ADAPT_USE_EXPLICIT_UNIT_NAMES}
-  ADAPT.Common.Intf, ADAPT.Common,
-  ADAPT.Generics.Lists.Intf;
-
-type
-  // Forward Declarations
-  ISteamJsonFile = interface;
-  ISteamApp = interface;
-
-  // Generic Collections
-  ISteamStringList = IADList<String>;
-  ISteamAppList = IADList<ISteamApp>;
-
-  ISteamJsonFile = interface(IADInterface)
-  ['{742C1414-FC96-4EA8-82E1-7AFD3A62B3CC}']
-    // Getters
-    function GetFileName: String;
-
-    // Properties
-    property FileName: String read GetFileName;
-  end;
-
-  ISteamApp = interface(IADInterface)
-  ['{CF8F49F8-6971-464E-9014-3FF80BE01261}']
-    // Getters
-    function GetAppId: Cardinal;
-    function GetName: String;
-
-    // Properties
-    property AppId: Cardinal read GetAppId;
-    property Name: String read GetName;
-  end;
+const
+  STEAM_API_URI = 'http://api.steampowered.com/';
+  STEAM_API_URI_FORMATTED = 'http://api.steampowered.com/%s';
+  STEAM_API_URI_SSL = 'https://api.steampowered.com/';
+  STEAM_API_URI_SSL_FORMATTED = 'https://api.steampowered.com/%s';
 
 implementation
 
