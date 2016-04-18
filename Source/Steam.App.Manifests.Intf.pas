@@ -41,7 +41,7 @@ interface
   NOTES:
 
   StateFlags = 1026 while Downloading...
-  StateFlags = 4 when Downloaded/No Updates...
+  StateFlags = 4 when Downloaded/No Updates... [CONFIRMED]
 
   Only allow Transfers if (BytesToDownload = 0) AND ((BytesDownloaded > 0) AND (SizeOnDisk > 0)) AND (BytesDownloaded = SizeOnDisk)
 
@@ -55,7 +55,9 @@ uses
     Classes,
   {$ENDIF ADAPT_USE_EXPLICIT_UNIT_NAMES}
   ADAPT.Common.Intf, ADAPT.Common,
-  ADAPT.Generics.Maps.Intf;
+  ADAPT.Generics.Lists.Intf,
+  ADAPT.Generics.Maps.Intf,
+  Steam.Common.Intf;
 
 type
   // Forward Declarations
@@ -64,12 +66,14 @@ type
   ISteamAppManifestStagedDepot = interface;
   ISteamAppManifestMountedDepot = interface;
 
+  // Enums
   TSteamAutoUpdateBehavior = (aubAlwaysUpdate, aubUpdateOnLaunch, aubAlwaysUpdatePriority);
   TSteamBackgroundDownloadBehavior = (bdbGlobalSetting, bdbAllow, bdbNever);
 
-//  ISteamAppManifestStagedDepotList = IADDictionary<Cardinal, ISteamAppManifestStagedDepot>; // Mapped on "Key"
+  // Generic Collections/Containers
+//  ISteamAppManifestStagedDepotDictionary = IADDictionary<Cardinal, ISteamAppManifestStagedDepot>; // Mapped on "Key"
 
-  ISteamAppManifest = interface(IADInterface)
+  ISteamAppManifest = interface(ISteamJsonFile)
   ['{C5FA375B-302B-4059-8D55-A61BE93A6B80}']
     // Getters
     function GetAllowOtherDownloadsWhileRunning: TSteamBackgroundDownloadBehavior;
@@ -81,6 +85,7 @@ type
     function GetConfig: ISteamAppManifestConfig;
     function GetHasBeenUpdated: Boolean;
     function GetInstallDir: String;
+    function GetInstallScripts: ISteamStringList;
     function GetLastOwner: Cardinal; //TODO -oDaniel -cManifest Clarification: Should this be a Reference to a Steam User Object?
     function GetLastUpdated: TDateTime;
     function GetName: String;
@@ -102,6 +107,7 @@ type
     property Config: ISteamAppManifestConfig read GetConfig;
     property HasBeenUpdated: Boolean read GetHasBeenUpdated;
     property InstallDir: String read GetInstallDir;
+    property InstallScripts: ISteamStringList read GetInstallScripts;
     property LastOwner: Cardinal read GetLastOwner; //TODO -oDaniel -cManifest Clarification: Should this be a Reference to a Steam User Object?
     property LastUpdated: TDateTime read GetLastUpdated;
     property Name: String read GetName;

@@ -35,6 +35,21 @@ unit Steam.Common;
 
 interface
 
+{$I ADAPT.inc}
+
+uses
+  {$IFDEF ADAPT_USE_EXPLICIT_UNIT_NAMES}
+    System.Classes,
+  {$ELSE}
+    Classes,
+  {$ENDIF ADAPT_USE_EXPLICIT_UNIT_NAMES}
+  ADAPT.Common.Intf, ADAPT.Common,
+  ADAPT.Generics.Lists.Intf, ADAPT.Generics.Lists,
+  Steam.Common.Intf;
+
+type
+  TSteamStringList = class(TADList<String>);
+
 implementation
 
 end.

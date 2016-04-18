@@ -35,6 +35,29 @@ unit Steam.Common.Intf;
 
 interface
 
+{$I ADAPT.inc}
+
+uses
+  {$IFDEF ADAPT_USE_EXPLICIT_UNIT_NAMES}
+    System.Classes,
+  {$ELSE}
+    Classes,
+  {$ENDIF ADAPT_USE_EXPLICIT_UNIT_NAMES}
+  ADAPT.Common.Intf, ADAPT.Common,
+  ADAPT.Generics.Lists.Intf;
+
+type
+  ISteamStringList = IADList<String>;
+
+  ISteamJsonFile = interface(IADInterface)
+  ['{742C1414-FC96-4EA8-82E1-7AFD3A62B3CC}']
+    // Getters
+    function GetFileName: String;
+
+    // Properties
+    property FileName: String read GetFileName;
+  end;
+
 implementation
 
 end.
