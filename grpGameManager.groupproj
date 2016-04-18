@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{AFA39DA7-A66F-4A74-B962-C055AA717AB9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GameManager\VCL\SteamGameManager_VCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GameManager\FMX\SteamGameManager_FMX.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SteamGameManager_VCL">
+        <MSBuild Projects="GameManager\VCL\SteamGameManager_VCL.dproj"/>
+    </Target>
+    <Target Name="SteamGameManager_VCL:Clean">
+        <MSBuild Projects="GameManager\VCL\SteamGameManager_VCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SteamGameManager_VCL:Make">
+        <MSBuild Projects="GameManager\VCL\SteamGameManager_VCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SteamGameManager_FMX">
+        <MSBuild Projects="GameManager\FMX\SteamGameManager_FMX.dproj"/>
+    </Target>
+    <Target Name="SteamGameManager_FMX:Clean">
+        <MSBuild Projects="GameManager\FMX\SteamGameManager_FMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SteamGameManager_FMX:Make">
+        <MSBuild Projects="GameManager\FMX\SteamGameManager_FMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SteamGameManager_VCL;SteamGameManager_FMX"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SteamGameManager_VCL:Clean;SteamGameManager_FMX:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SteamGameManager_VCL:Make;SteamGameManager_FMX:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
