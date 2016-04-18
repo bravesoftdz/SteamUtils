@@ -51,11 +51,41 @@ uses
 type
   // Forward Declarations
   ISteamApi = interface;
+  ISteamWebApiInterfaceMethod = interface;
+  ISteamWebApiInterface = interface;
+  ISteamWebApiUtil = interface;
   ISteamApps = interface;
+
+  // Generic Collections
+  ISteamWebApiInterfaceMethodList = IADList<ISteamWebApiInterfaceMethod>;
+  ISteamWebApiInterfaceList = IADList<ISteamWebApiInterface>;
 
   ISteamApi = interface(IADInterface)
   ['{2915FC43-626C-4F5D-8280-88329701CF0B}']
 
+  end;
+
+  ISteamWebApiInterfaceMethod = interface(IADInterface)
+  ['{A379A5CA-C512-4753-B52A-BA6972249380}']
+
+  end;
+
+  ISteamWebApiInterface = interface(IADInterface)
+  ['{FEE3007C-5EC1-4C60-B309-D1A2EF120703}']
+    // Getters
+    function GetName: String;
+
+    // Properties
+    property Name: String read GetName;
+  end;
+
+  ISteamWebApiUtil = interface(ISteamApi)
+  ['{17F1051C-47B6-43F0-8624-14BA28EDAB47}']
+    // Api Getters
+    function GetSupportedApiList: ISteamWebApiInterfaceList;
+
+    // Properties
+    property SupportedApiList: ISteamWebApiInterfaceList read GetSupportedApiList;
   end;
 
   ISteamApps = interface(ISteamApi)
